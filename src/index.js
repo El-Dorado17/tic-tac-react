@@ -3,9 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 /*
-We only have 3 React Components: Square, Board, and Game
+We only have 3 React Components: 
 
+Square
+    Renders a button
 
+Board
+    Renders 9 squares
+
+Game
+    Renders the interactive portions (not yet created)
+
+!LEFT OFF AT Passing Data Through Props
 
 
 */
