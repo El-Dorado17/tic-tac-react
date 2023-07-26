@@ -20,8 +20,10 @@ What I've Done:
   -added an onClick function so when a square is clicked, it console.logs 'click'
   
   -Use state to remember when/where X was clicked 
+  -Lifting state to a parent component so all child components may be 
+  in order
 
-
+  -Filled all squares with null value until given an X/O
 */
 
 
@@ -30,21 +32,21 @@ What I've Done:
 //constructor is added to this class to initialize the state??
 
 class Square extends React.Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-        value: null,
-      }
-    }
+    // constructor(props) {
+    //   super(props)
+    //   this.state = {
+    //     value: null,
+    //   }
+    // }
 //render method is changed to show the states value when clicked
 //Now, wherever I click will by re-rendered as X
     render() {
       return (
         <button 
         className="square" 
-        onClick={()=> this.setState({value: 'X'})}
+        onClick={()=> this.props.onClick()}
         >
-          {this.state.value}
+          {this.props.value}
         </button>
       );
     }
@@ -59,10 +61,22 @@ class Square extends React.Component {
     }
     //The purpose of the above: So all squares are marked as null until filled
     //with either X or O value
-    renderSquare(i) {
-      return <Square value={i} />; //changed to pass prop "value"
+
+    handleClick(i){
+      const squares = this.state.squares.slice();
+      squares[i] = 'X'
+      this.setState({squares:squares})
     }
   
+    renderSquare(i) {
+      return (
+      <Square
+        value={this.state.squares[i]} 
+        onClick={()=> this.handleClick(i)}
+        /> //changed to pass prop "value" //* changed to pass squares current value
+      )
+    }
+    //square value is actually passing the prop DOWN to a child component (Board to Square)
     render() {
       const status = 'Next player: X';
   
