@@ -31,6 +31,7 @@ What I've Done:
 
 //constructor is added to this class to initialize the state??
 
+/*
 class Square extends React.Component {
     // constructor(props) {
     //   super(props)
@@ -51,12 +52,23 @@ class Square extends React.Component {
       );
     }
   }
+  */
+
+  function Square(props) {
+    return (
+      <button className="square" onClick={props.onClick}>
+        {props.value}
+      </button>
+    );
+  }
 
   
   class Board extends React.Component {
     constructor(props){
-      super(props);this.state = {
+      super(props)
+      this.state = {
         squares: Array(9).fill(null),
+        xIsNext: true,
       }
     }
     //The purpose of the above: So all squares are marked as null until filled
@@ -64,9 +76,14 @@ class Square extends React.Component {
 
     handleClick(i){
       const squares = this.state.squares.slice();
-      squares[i] = 'X'
-      this.setState({squares:squares})
+      squares[i] = this.state.xIsNext? 'X' : 'O';
+      this.setState({
+        squares:squares,
+        xIsNext: !this.state.xIsNext
+      })
     }
+    // This allows state to be stored in the Board component
+    // Also we are using .slice on a copy of the squares array instead of modifying them directly
   
     renderSquare(i) {
       return (
@@ -78,7 +95,7 @@ class Square extends React.Component {
     }
     //square value is actually passing the prop DOWN to a child component (Board to Square)
     render() {
-      const status = 'Next player: X';
+      const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
   
       return (
         <div>
