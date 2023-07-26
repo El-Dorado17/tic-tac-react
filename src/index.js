@@ -14,22 +14,42 @@ Board
 Game
     Renders the interactive portions (not yet created)
 
-!LEFT OFF AT Passing Data Through Props
+
+What I've Done:
+  -Passed the value as a prop in Square so each square shows what number it is
+  -added an onClick function so when a square is clicked, it console.logs 'click'
+  
+  -Use state to remember when/where X was clicked 
 
 
 */
 
 
 // this.props.value changes each square to show its value/number
+
+//constructor is added to this class to initialize the state??
+
 class Square extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        value: null,
+      }
+    }
+//render method is changed to show the states value when clicked
+//Now, wherever I click will by re-rendered as X
     render() {
       return (
-        <button className="square">
-          {this.props.value}
+        <button 
+        className="square" 
+        onClick={()=> this.setState({value: 'X'})}
+        >
+          {this.state.value}
         </button>
       );
     }
   }
+
   
   class Board extends React.Component {
     renderSquare(i) {
