@@ -71,6 +71,10 @@ class Square extends React.Component {
 
   
   class Board extends React.Component {
+
+    //Board no longer gets constructor; see renderSquare
+
+
     constructor(props){
       super(props)
       this.state = {
@@ -98,6 +102,10 @@ class Square extends React.Component {
     renderSquare(i) {
       return (
       <Square
+
+//   value={this.props.squares[i]}
+//onClick={() => this.props.onClick(i)}
+
         value={this.state.squares[i]} 
         onClick={()=> this.handleClick(i)}
         /> //changed to pass prop "value" //* changed to pass squares current value
