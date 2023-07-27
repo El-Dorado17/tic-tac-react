@@ -33,14 +33,19 @@ What I've Done:
 
 /*
 class Square extends React.Component {
-    // constructor(props) {
-    //   super(props)
-    //   this.state = {
-    //     value: null,
-    //   }
-    // }
-//render method is changed to show the states value when clicked
-//Now, wherever I click will by re-rendered as X
+
+
+                  constructor(props) {
+                    super(props)
+                    this.state = {
+                      value: null,
+                    }
+                  }
+              render method is changed to show the states value when clicked
+              Now, wherever I click will by re-rendered as X
+
+
+              
     render() {
       return (
         <button 
