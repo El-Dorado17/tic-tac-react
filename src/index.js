@@ -57,6 +57,8 @@ class Square extends React.Component {
       );
     }
   }
+
+  !NEXT: Lift state up again; learn and repeat
   */
 
   function Square(props) {
